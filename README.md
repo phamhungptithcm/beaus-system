@@ -1,4 +1,4 @@
-# Microservices System Design for BigTech Interview
+# Microservices System Design for Beaus System
 
 This repository contains the design and documentation for a microservices-based system that I am building as part of my BigTech interview preparation. The system will be composed of various microservices, each responsible for a specific domain, and the repository will track the progress of tasks required for the system’s design and implementation.
 
