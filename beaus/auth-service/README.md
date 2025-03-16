@@ -18,24 +18,137 @@
 
 ## 📂 **Project Structure**
 
-```
-src/main/java/com/auth
-│── application
-│   ├── service          # Business logic layer
-│── domain
-│   ├── model            # Entities & domain models
-│   ├── repository       # Repository layer
-│── infrastructure
-│   ├── controller       # API Controllers
-│── config
-│   ├── SecurityConfig   # Security configuration
-│   ├── OpenAPIConfig    # API Documentation setup
-│── test
-│   ├── service          # Unit tests
-│   ├── integration      # Integration tests
-```
-
 ---
+
+# Database Schema
+
+## 1. Permission Table
+
+This table stores different types of permissions that can be assigned to roles.
+
+| Column Name      | Type         | Description                                                 |
+| ---------------- | ------------ | ----------------------------------------------------------- |
+| id               | SERIAL (PK)  | Unique identifier for each permission.                      |
+| name             | VARCHAR(255) | Unique name of the permission (e.g., READ, MODIFY, DELETE). |
+| created_date     | TIMESTAMPTZ  | Timestamp when the permission was created.                  |
+| created_by       | VARCHAR(255) | The user who created the permission (default is 'system').  |
+| modified_date    | TIMESTAMPTZ  | Timestamp when the permission was last modified.            |
+| modified_by      | VARCHAR(255) | The user who last modified the permission.                  |
+| is_active        | BOOLEAN      | Indicates if the permission is active.                      |
+| version          | INT          | Version number for tracking updates.                        |
+| deleted_date     | TIMESTAMPTZ  | Timestamp when the permission was deleted (if applicable).  |
+| deleted_by       | VARCHAR(255) | The user who deleted the permission.                        |
+| reactivated_date | TIMESTAMPTZ  | Timestamp when the permission was reactivated.              |
+| reactivated_by   | VARCHAR(255) | The user who reactivated the permission.                    |
+| data_source      | VARCHAR(255) | Source of the data (default is 'unknown').                  |
+
+## 2. Module Table
+
+This table represents system modules where permissions apply.
+
+| Column Name      | Type         | Description                                               |
+| ---------------- | ------------ | --------------------------------------------------------- |
+| id               | SERIAL (PK)  | Unique identifier for each module.                        |
+| name             | VARCHAR(255) | Unique name of the module (e.g., Product, Order, Report). |
+| created_date     | TIMESTAMPTZ  | Timestamp when the module was created.                    |
+| created_by       | VARCHAR(255) | The user who created the module.                          |
+| modified_date    | TIMESTAMPTZ  | Timestamp when the module was last modified.              |
+| modified_by      | VARCHAR(255) | The user who last modified the module.                    |
+| is_active        | BOOLEAN      | Indicates if the module is active.                        |
+| version          | INT          | Version number for tracking updates.                      |
+| deleted_date     | TIMESTAMPTZ  | Timestamp when the module was deleted.                    |
+| deleted_by       | VARCHAR(255) | The user who deleted the module.                          |
+| reactivated_date | TIMESTAMPTZ  | Timestamp when the module was reactivated.                |
+| reactivated_by   | VARCHAR(255) | The user who reactivated the module.                      |
+| data_source      | VARCHAR(255) | Source of the data (default is 'unknown').                |
+
+## 3. Role Table
+
+Defines different roles that users can have in the system.
+
+| Column Name      | Type         | Description                                         |
+| ---------------- | ------------ | --------------------------------------------------- |
+| id               | SERIAL (PK)  | Unique identifier for each role.                    |
+| name             | VARCHAR(255) | Unique role name (e.g., Administrator, Supervisor). |
+| created_date     | TIMESTAMPTZ  | Timestamp when the role was created.                |
+| created_by       | VARCHAR(255) | The user who created the role.                      |
+| modified_date    | TIMESTAMPTZ  | Timestamp when the role was last modified.          |
+| modified_by      | VARCHAR(255) | The user who last modified the role.                |
+| is_active        | BOOLEAN      | Indicates if the role is active.                    |
+| version          | INT          | Version number for tracking updates.                |
+| deleted_date     | TIMESTAMPTZ  | Timestamp when the role was deleted.                |
+| deleted_by       | VARCHAR(255) | The user who deleted the role.                      |
+| reactivated_date | TIMESTAMPTZ  | Timestamp when the role was reactivated.            |
+| reactivated_by   | VARCHAR(255) | The user who reactivated the role.                  |
+| data_source      | VARCHAR(255) | Source of the data (default is 'unknown').          |
+
+## 4. Role_Permissions Table
+
+Maps roles, permissions, and modules together.
+
+| Column Name      | Type         | Description                                   |
+| ---------------- | ------------ | --------------------------------------------- |
+| role_id          | INT (FK)     | References role(id).                          |
+| permission_id    | INT (FK)     | References permission(id).                    |
+| module_id        | INT (FK)     | References module(id).                        |
+| created_date     | TIMESTAMPTZ  | Timestamp when the mapping was created.       |
+| created_by       | VARCHAR(255) | The user who created the mapping.             |
+| modified_date    | TIMESTAMPTZ  | Timestamp when the mapping was last modified. |
+| modified_by      | VARCHAR(255) | The user who last modified the mapping.       |
+| is_active        | BOOLEAN      | Indicates if the mapping is active.           |
+| version          | INT          | Version number for tracking updates.          |
+| deleted_date     | TIMESTAMPTZ  | Timestamp when the mapping was deleted.       |
+| deleted_by       | VARCHAR(255) | The user who deleted the mapping.             |
+| reactivated_date | TIMESTAMPTZ  | Timestamp when the mapping was reactivated.   |
+| reactivated_by   | VARCHAR(255) | The user who reactivated the mapping.         |
+| data_source      | VARCHAR(255) | Source of the data.                           |
+
+**Primary Key**: (role_id, permission_id, module_id) - Composite key to ensure uniqueness.
+
+## 5. Users Table
+
+Stores user details.
+
+| Column Name      | Type         | Description                                 |
+| ---------------- | ------------ | ------------------------------------------- |
+| id               | SERIAL (PK)  | Unique identifier for each user.            |
+| username         | VARCHAR(255) | Unique username.                            |
+| email            | VARCHAR(255) | Unique email address.                       |
+| password         | VARCHAR(255) | Hashed password for authentication.         |
+| last_login_date  | TIMESTAMPTZ  | The last time the user logged in.           |
+| created_date     | TIMESTAMPTZ  | Timestamp when the user was created.        |
+| created_by       | VARCHAR(255) | The user who created this account.          |
+| modified_date    | TIMESTAMPTZ  | Timestamp when the user was last modified.  |
+| modified_by      | VARCHAR(255) | The user who last modified the account.     |
+| is_active        | BOOLEAN      | Indicates if the user is active.            |
+| version          | INT          | Version number for tracking updates.        |
+| deleted_date     | TIMESTAMPTZ  | Timestamp when the user was deleted.        |
+| deleted_by       | VARCHAR(255) | The user who deleted the account.           |
+| reactivated_date | TIMESTAMPTZ  | Timestamp when the account was reactivated. |
+| reactivated_by   | VARCHAR(255) | The user who reactivated the account.       |
+| data_source      | VARCHAR(255) | Source of the data.                         |
+
+## 6. User_Roles Table
+
+Maps users to roles.
+
+| Column Name      | Type         | Description                                   |
+| ---------------- | ------------ | --------------------------------------------- |
+| user_id          | INT (FK)     | References users(id).                         |
+| role_id          | INT (FK)     | References role(id).                          |
+| created_date     | TIMESTAMPTZ  | Timestamp when the mapping was created.       |
+| created_by       | VARCHAR(255) | The user who created the mapping.             |
+| modified_date    | TIMESTAMPTZ  | Timestamp when the mapping was last modified. |
+| modified_by      | VARCHAR(255) | The user who last modified the mapping.       |
+| is_active        | BOOLEAN      | Indicates if the mapping is active.           |
+| version          | INT          | Version number for tracking updates.          |
+| deleted_date     | TIMESTAMPTZ  | Timestamp when the mapping was deleted.       |
+| deleted_by       | VARCHAR(255) | The user who deleted the mapping.             |
+| reactivated_date | TIMESTAMPTZ  | Timestamp when the mapping was reactivated.   |
+| reactivated_by   | VARCHAR(255) | The user who reactivated the mapping.         |
+| data_source      | VARCHAR(255) | Source of the data.                           |
+
+**Primary Key**: (user_id, role_id) - Composite key to ensure uniqueness.
 
 ## 🛠️ **Tech Stack**
 

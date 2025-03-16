@@ -1,4 +1,4 @@
-package com.beaus.auth.application.service;
+package com.beaus.auth.application.gateway;
 
 import com.beaus.auth.model.ApiResponse;
 import com.beaus.auth.model.JwtAuthenticationResponse;

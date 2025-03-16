@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.beaus.auth.application.service.IAuthService;
+import com.beaus.auth.application.gateway.IAuthService;
 import com.beaus.auth.model.ApiResponse;
 import com.beaus.auth.model.JwtAuthenticationResponse;
 import com.beaus.auth.model.LoginRequest;

@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.beaus.auth.application.gateway.IAuthService;
 import com.beaus.auth.model.ApiResponse;
 import com.beaus.auth.model.JwtAuthenticationResponse;
 import com.beaus.auth.model.LoginRequest;
