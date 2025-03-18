@@ -1,4 +1,4 @@
-name: CI Build, Test, Version & Docker Build
+name: CI Build, Test & Docker Build
 
 on:
   push:
@@ -35,14 +35,6 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('beaus/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
 
-      - name: Get Current App Version
-        id: get_version
-        working-directory: beaus
-        run: |
-          CURRENT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-          echo "Current version is: $CURRENT_VERSION"
-          echo "APP_VERSION=$CURRENT_VERSION" >> $GITHUB_ENV
-
       - name: Build Auth Service
         working-directory: beaus/auth-service
         run: mvn clean package
@@ -50,20 +42,4 @@ jobs:
       - name: Build Docker Image for Auth Service
         working-directory: beaus/auth-service
         run: |
-          docker build -t my-auth-service:${{ env.APP_VERSION }} .
-
-      - name: Bump Next Version in Parent POM
-        working-directory: beaus
-        env:
-          CURRENT_VERSION: ${{ env.APP_VERSION }}
-        run: |
-          IFS='.-' read -r major minor patch qualifier <<< "$CURRENT_VERSION"
-          NEW_PATCH=$((patch + 1))
-          NEW_VERSION="${major}.${minor}.${NEW_PATCH}-SNAPSHOT"
-          echo "Bumping version to: $NEW_VERSION"
-          mvn versions:set -DnewVersion=${NEW_VERSION} -DgenerateBackupPoms=false
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add pom.xml
-          git commit -m "Bump version to ${NEW_VERSION}"
-          git push origin HEAD:${{ github.ref }}
+          docker build -t my-auth-service:latest .
