@@ -1,32 +1,28 @@
-# Use OpenJDK base image
-FROM openjdk:17-jdk-slim AS build
+# Stage 1: Build the application using Maven
+FROM maven:3.8.6-eclipse-temurin-17 AS builder
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the Maven project descriptor (pom.xml)
+# Copy the pom.xml file and download dependencies
 COPY pom.xml .
-
-# Download the dependencies to improve Docker build cache efficiency
 RUN mvn dependency:go-offline -B
 
-# Copy the source code to the working directory
+# Copy the source code and build the application
 COPY src ./src
+RUN mvn clean package
 
-# Build the application using Maven
-RUN mvn clean package -DskipTests
-
-# Use a smaller base image for running the application
-FROM openjdk:17-jdk-slim
+# Stage 2: Create the runtime image
+FROM eclipse-temurin:17-jre-alpine
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the JAR file from the build stage
-COPY --from=build /app/target/auth-service-1.0.0.jar auth-service.jar
+# Copy the JAR file from the builder stage
+COPY --from=builder /app/target/*.jar app.jar
 
 # Expose the application port
 EXPOSE 8080
 
-# Command to run the Spring Boot application
-ENTRYPOINT ["java", "-jar", "auth-service.jar"]
+# Set the entry point to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
