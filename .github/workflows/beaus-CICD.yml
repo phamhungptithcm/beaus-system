@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - beaus-dev
-
+    paths:
+      - '**/*.java'
+      - '**/*.properties'
+      - 'pom.xml'
 jobs:
   build:
     runs-on: ubuntu-latest
