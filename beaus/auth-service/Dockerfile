@@ -10,7 +10,7 @@ RUN mvn dependency:go-offline -B
 
 # Copy the source code and build the application
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN mvn clean package
 
 # Stage 2: Create the runtime image
 FROM eclipse-temurin:17-jre-alpine
@@ -19,10 +19,10 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # Copy the JAR file from the builder stage
-COPY --from=builder /app/target/*.jar auth-serve-1.0.2.jar
+COPY --from=builder /app/target/*.jar app.jar
 
 # Expose the application port
 EXPOSE 8080
 
 # Set the entry point to run the application
-ENTRYPOINT ["java", "-jar", "auth-serve-1.0.2.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
