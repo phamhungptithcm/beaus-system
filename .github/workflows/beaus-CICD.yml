@@ -39,7 +39,7 @@ jobs:
         working-directory: beaus/auth-service
         run: mvn clean package
 
-      - name: Build Docker Image for Auth Service
-        working-directory: beaus/auth-service
-        run: |
-          docker build -t my-auth-service:latest .
+      #- name: Build Docker Image for Auth Service
+      #  working-directory: beaus/auth-service
+      #  run: |
+        #  docker build -t my-auth-service:latest .
