@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - beaus-dev
-  pull_request:
-    branches:
-      - beaus-dev
 
 jobs:
   build:
