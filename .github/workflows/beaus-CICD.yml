@@ -15,37 +15,13 @@ on:
       - 'beaus/pom.xml'
 
 jobs:
-  fetch:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-  test:
-    runs-on: ubuntu-latest
-    needs: fetch
-    steps:
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 17
-
-      - name: Cache Maven Packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('beaus/pom.xml') }}
-          restore-keys: ${{ runner.os }}-maven-
-
-      - name: Run Unit Tests for Auth Service
-        working-directory: beaus/auth-service
-        run: mvn test
-
-  build:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -63,14 +39,7 @@ jobs:
         working-directory: beaus/auth-service
         run: mvn clean package
 
-  docker:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Build Docker Image
-        working-directory: beaus/auth-service
-        #run: |
-         # docker build -t my-auth-service .
+      #- name: Build Docker Image for Auth Service
+      #  working-directory: beaus/auth-service
+      #  run: |
+        #  docker build -t my-auth-service:latest .
