@@ -1,0 +1,143 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.1">
+  <diagram name="Trang-1" id="d1ZY6Gs2JRam4f3DYEWz">
+    <mxGraphModel dx="1368" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ql5mFpODUs7dOvnNug6d-2" value="User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="20" y="50" width="150" height="983" as="geometry" />
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-3" value="System (Beaus Website)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="446" y="50" width="197" height="983" as="geometry" />
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-4" value="OAuth2 Provider (Google)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="863" y="50" width="207" height="983" as="geometry" />
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-5" value="Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="50" width="150" height="983" as="geometry" />
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-6" value="JWT Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="50" width="150" height="983" as="geometry" />
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-7" value="alt" style="shape=umlFrame;dashed=1;pointerEvents=0;dropTarget=0;strokeColor=#B3B3B3;height=20;width=30" vertex="1" parent="1">
+          <mxGeometry x="533" y="653" width="673" height="141" as="geometry" />
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-8" value="[User does not exist]" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="ql5mFpODUs7dOvnNug6d-7">
+          <mxGeometry x="30" width="643" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-9" value="1. Request to register/login via OAuth2 (e.g., Google)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-2" target="ql5mFpODUs7dOvnNug6d-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="328" y="153" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-10" value="2. Redirect to OAuth2 Provider for authentication" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-3" target="ql5mFpODUs7dOvnNug6d-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="764" y="201" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-11" value="3. Prompt for authentication and consent" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-4" target="ql5mFpODUs7dOvnNug6d-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="542" y="249" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-12" value="4. Authenticate and grant consent" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-2" target="ql5mFpODUs7dOvnNug6d-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="539" y="297" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-13" value="5. Return authorization code" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-4" target="ql5mFpODUs7dOvnNug6d-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="767" y="345" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-14" value="6. Exchange code for access token" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-3" target="ql5mFpODUs7dOvnNug6d-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="764" y="393" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-15" value="7. Return access token" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-4" target="ql5mFpODUs7dOvnNug6d-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="767" y="441" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-16" value="8. Request user info (email, name, etc.)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-3" target="ql5mFpODUs7dOvnNug6d-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="764" y="489" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-17" value="9. Return user info" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-4" target="ql5mFpODUs7dOvnNug6d-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="767" y="537" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-18" value="10. Check if user exists (by provider and providerId)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-3" target="ql5mFpODUs7dOvnNug6d-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="878" y="585" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-19" value="11. Return result (exists or not)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-5" target="ql5mFpODUs7dOvnNug6d-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="881" y="633" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-20" value="12. Create new user (store email, provider, providerId)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-3" target="ql5mFpODUs7dOvnNug6d-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="878" y="726" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-21" value="13. Confirm user creation" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-5" target="ql5mFpODUs7dOvnNug6d-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="881" y="774" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-22" value="14. Generate JWT for user" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-3" target="ql5mFpODUs7dOvnNug6d-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="978" y="832" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-23" value="15. Return JWT" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-6" target="ql5mFpODUs7dOvnNug6d-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="981" y="880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ql5mFpODUs7dOvnNug6d-24" value="16. Return JWT (for future requests)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="ql5mFpODUs7dOvnNug6d-3" target="ql5mFpODUs7dOvnNug6d-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="331" y="928" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
